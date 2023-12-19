@@ -17,7 +17,7 @@ from .models.request import TTSRequest
 from .models.response import AudioFile, AudioConfig, TTSResponse, TTSFailureResponse
 from .utils.text import TextNormalizer
 from .utils.paragraph_handler import ParagraphHandler
-from src.postprocessor import PostProcessor
+from .postprocessor import PostProcessor
 
 class TextToSpeechEngine:
     def __init__(
@@ -57,7 +57,7 @@ class TextToSpeechEngine:
         self.orig_sr = 22050 # model.output_sample_rate
         self.enable_denoiser = enable_denoiser
         if enable_denoiser:
-            from src.postprocessor import Denoiser
+            from .postprocessor import Denoiser
             self.target_sr = 16000
             self.denoiser = Denoiser(self.orig_sr, self.target_sr)
         else:
